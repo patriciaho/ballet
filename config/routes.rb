@@ -1,5 +1,5 @@
 Rails.application.routes.draw do
-  root 'sessions#index'
+  root 'student_sessions#index'
   resources :student_sessions
   resources :students
   resources :sessions
