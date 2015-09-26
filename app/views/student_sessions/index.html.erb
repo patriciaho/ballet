@@ -5,13 +5,17 @@
 
   <% @sessions.each do |session| %>
     <h2><%= session.date.strftime("%m/%d/%Y") %></h2>
-    <% session.student_sessions.each do |ss| %>
-      <p><%= ss.student.name %> <%= link_to 'X', ss, method: :delete, data: { confirm: 'Are you sure you want to cancel?' } %></p>
+    <% if session.student_sessions.count < 1 %>
+      <p class="text-info">No one is signed up yet!</p>
+    <% else %>
+      <% session.student_sessions.each do |ss| %>
+        <p><%= ss.student.name %> <%= link_to 'X', ss, method: :delete, data: { confirm: 'Are you sure you want to cancel?' } %></p>
+      <% end %>
     <% end %>
   <% end %>
 
   <br>
 
-  <%= link_to 'Sign Up for a Class!', new_student_session_path, :class => "btn btn-primary btn-raised" %>
+  <%= link_to 'Sign Up!', new_student_session_path, :class => "btn btn-primary btn-raised" %>
 
 </div>
