@@ -1,0 +1,25 @@
+<%= form_for(@student_session) do |f| %>
+  <% if @student_session.errors.any? %>
+    <div id="error_explanation">
+      <h2><%= pluralize(@student_session.errors.count, "error") %> prohibited this student_session from being saved:</h2>
+
+      <ul>
+      <% @student_session.errors.full_messages.each do |message| %>
+        <li><%= message %></li>
+      <% end %>
+      </ul>
+    </div>
+  <% end %>
+
+  <div class="field form-group">
+    <%= f.label :student_id, :class => "col-lg-2 control-label"  %><br>
+    <%= f.select :student_id, Student.all.collect {|s| [ s.name, s.id ] }, {}, { :class => "form-control" } %>
+  </div>
+  <div class="field form-group">
+    <%= f.label "Class", :class => "col-lg-2 control-label" %><br>
+    <%= f.select :session_id, Session.all.collect {|s| [ s.date.strftime("%m/%d/%Y"), s.id ] }, {}, { :class => "form-control" } %>
+  </div>
+  <div class="actions">
+    <%= f.submit "Sign up For Class!", :class => "btn btn-primary btn-raised"%>
+  </div>
+<% end %>

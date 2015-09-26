@@ -1,0 +1,15 @@
+<p id="notice"><%= notice %></p>
+<h1>Friday Night Ballet Roster</h1>
+
+<% @sessions.each do |session| %>
+  <h3><%= session.date.strftime("%m/%d/%Y") %></h3>
+  <ul>
+    <% session.student_sessions.each do |ss| %>
+    <li><%= ss.student.name %> <%= link_to 'X', ss, method: :delete, data: { confirm: 'Are you sure you want to cancel?' } %></li>
+    <% end %>
+  </ul>
+<% end %>
+
+<br>
+
+<%= link_to 'Sign Up for a Class!', new_student_session_path, :class => "btn btn-primary btn-raised" %>
