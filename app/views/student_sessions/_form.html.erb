@@ -16,10 +16,14 @@
     <%= f.select :student_id, Student.all.collect {|s| [ s.name, s.id ] }, {}, { :class => "form-control" } %>
   </div>
   <div class="field form-group">
+    <%= f.label :certainty, :class => "col-lg-2 control-label"  %><br>
+    <%= f.select :certainty, [["Definite","Definite"], ["Maybe","Maybe"]], {}, { :class => "form-control" } %>
+  </div>
+  <div class="field form-group">
     <%= f.label "Class", :class => "col-lg-2 control-label" %><br>
     <%= f.select :session_id, Session.all.collect {|s| [ s.date.strftime("%m/%d/%Y"), s.id ] }, {}, { :class => "form-control" } %>
   </div>
   <div class="actions">
-    <%= f.submit "Sign up For Class!", :class => "btn btn-primary btn-raised"%>
+    <%= f.submit :class => "btn btn-primary btn-raised"%>
   </div>
 <% end %>

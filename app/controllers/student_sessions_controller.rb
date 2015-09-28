@@ -36,7 +36,7 @@ class StudentSessionsController < ApplicationController
   def update
     respond_to do |format|
       if @student_session.update(student_session_params)
-        format.html { redirect_to @student_session, notice: 'Student session was successfully updated.' }
+        format.html { redirect_to student_sessions_path, notice: 'Student session was successfully updated.' }
       else
         format.html { render :edit }
       end
@@ -60,6 +60,6 @@ class StudentSessionsController < ApplicationController
 
     # Never trust parameters from the scary internet, only allow the white list through.
     def student_session_params
-      params.require(:student_session).permit(:student_id, :session_id)
+      params.require(:student_session).permit(:student_id, :session_id, :certainty)
     end
 end

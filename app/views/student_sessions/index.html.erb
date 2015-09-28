@@ -18,7 +18,12 @@
         <p class="text-info">No one is signed up yet!</p>
       <% else %>
         <% session.student_sessions.each do |ss| %>
-          <p><%= ss.student.name %> <%= link_to 'X', ss, method: :delete, data: { confirm: 'Are you sure you want to cancel?' } %></p>
+          <p>
+            <%= ss.student.name %>,
+            <%= ss.certainty %>
+            <%= link_to 'Edit', edit_student_session_path(ss) %>
+            <%= link_to 'X', ss, method: :delete, data: { confirm: 'Are you sure you want to cancel?' } %>
+          </p>
         <% end %>
       <% end %>
     <% end %>
@@ -34,7 +39,7 @@
         <p class="text-info">No one is signed up yet!</p>
       <% else %>
         <% session.student_sessions.each do |ss| %>
-          <p><%= ss.student.name %> <%= link_to 'X', ss, method: :delete, data: { confirm: 'Are you sure you want to cancel?' } %></p>
+          <p><%= ss.student.name %></p>
         <% end %>
       <% end %>
     <% end %>
