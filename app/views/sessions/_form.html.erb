@@ -13,9 +13,9 @@
 
   <div class="field">
     <%= f.label :date %><br>
-    <%= f.datetime_select :date %>
+    <%= f.date_select :date, order: [:month, :day, :year] %>
   </div>
   <div class="actions">
-    <%= f.submit %>
+    <%= f.submit "Add New Class Date" %>
   </div>
 <% end %>
