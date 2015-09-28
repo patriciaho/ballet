@@ -8,11 +8,6 @@ class StudentSessionsController < ApplicationController
     @sessions = Session.all
   end
 
-  # GET /student_sessions/1
-  # GET /student_sessions/1.json
-  def show
-  end
-
   # GET /student_sessions/new
   def new
     @student_session = StudentSession.new
@@ -30,10 +25,8 @@ class StudentSessionsController < ApplicationController
     respond_to do |format|
       if @student_session.save
         format.html { redirect_to student_sessions_path, notice: 'You successfully signed up!' }
-        format.json { render :show, status: :created, location: @student_session }
       else
         format.html { render :new }
-        format.json { render json: @student_session.errors, status: :unprocessable_entity }
       end
     end
   end
@@ -44,10 +37,8 @@ class StudentSessionsController < ApplicationController
     respond_to do |format|
       if @student_session.update(student_session_params)
         format.html { redirect_to @student_session, notice: 'Student session was successfully updated.' }
-        format.json { render :show, status: :ok, location: @student_session }
       else
         format.html { render :edit }
-        format.json { render json: @student_session.errors, status: :unprocessable_entity }
       end
     end
   end
@@ -58,7 +49,6 @@ class StudentSessionsController < ApplicationController
     @student_session.destroy
     respond_to do |format|
       format.html { redirect_to student_sessions_url, notice: 'Class participation canceled.' }
-      format.json { head :no_content }
     end
   end
 

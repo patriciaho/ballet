@@ -1,15 +1,10 @@
 class SessionsController < ApplicationController
-  before_action :set_session, only: [:show, :edit, :update, :destroy]
+  before_action :set_session, only: [:edit, :update, :destroy]
 
   # GET /sessions
   # GET /sessions.json
   def index
     @sessions = Session.all
-  end
-
-  # GET /sessions/1
-  # GET /sessions/1.json
-  def show
   end
 
   # GET /sessions/new
@@ -28,11 +23,9 @@ class SessionsController < ApplicationController
 
     respond_to do |format|
       if @session.save
-        format.html { redirect_to @session, notice: 'Session was successfully created.' }
-        format.json { render :show, status: :created, location: @session }
+        format.html { redirect_to sessions_path, notice: 'Session was successfully created.' }
       else
         format.html { render :new }
-        format.json { render json: @session.errors, status: :unprocessable_entity }
       end
     end
   end
@@ -42,11 +35,9 @@ class SessionsController < ApplicationController
   def update
     respond_to do |format|
       if @session.update(session_params)
-        format.html { redirect_to @session, notice: 'Session was successfully updated.' }
-        format.json { render :show, status: :ok, location: @session }
+        format.html { redirect_to sessions_path, notice: 'Session was successfully updated.' }
       else
         format.html { render :edit }
-        format.json { render json: @session.errors, status: :unprocessable_entity }
       end
     end
   end
@@ -57,7 +48,6 @@ class SessionsController < ApplicationController
     @session.destroy
     respond_to do |format|
       format.html { redirect_to sessions_url, notice: 'Session was successfully destroyed.' }
-      format.json { head :no_content }
     end
   end
 
