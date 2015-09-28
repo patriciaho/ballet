@@ -3,4 +3,5 @@ class Session < ActiveRecord::Base
   has_many :students, :through => :student_sessions
 
   default_scope { order('date ASC') }
+  scope :upcoming, -> { where('date >= ?', Date.today) }
 end

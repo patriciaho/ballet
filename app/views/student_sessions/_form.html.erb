@@ -21,7 +21,7 @@
   </div>
   <div class="field form-group">
     <%= f.label "Class", :class => "col-lg-2 control-label" %><br>
-    <%= f.select :session_id, Session.all.collect {|s| [ s.date.strftime("%m/%d/%Y"), s.id ] }, {}, { :class => "form-control" } %>
+    <%= f.select :session_id, Session.upcoming.collect {|s| [ s.date.strftime("%m/%d/%Y"), s.id ] }, {}, { :class => "form-control" } %>
   </div>
   <div class="actions">
     <%= f.submit "Submit", :class => "btn btn-primary btn-raised"%>
