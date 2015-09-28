@@ -1,8 +1,10 @@
 Rails.application.routes.draw do
   root 'student_sessions#index'
-  resources :student_sessions
-  resources :students
-  resources :sessions
+  resources :student_sessions, except: :show
+  resources :students, except: :show
+  resources :sessions, except: :show
+
+  get 'instructor' => 'instructor#dashboard', as: :instructor
   # The priority is based upon order of creation: first created -> highest priority.
   # See how all your routes lay out with "rake routes".
 
