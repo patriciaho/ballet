@@ -24,6 +24,6 @@
     <%= f.select :session_id, Session.all.collect {|s| [ s.date.strftime("%m/%d/%Y"), s.id ] }, {}, { :class => "form-control" } %>
   </div>
   <div class="actions">
-    <%= f.submit :class => "btn btn-primary btn-raised"%>
+    <%= f.submit "Submit", :class => "btn btn-primary btn-raised"%>
   </div>
 <% end %>
