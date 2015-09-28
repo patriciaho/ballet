@@ -33,14 +33,10 @@
 
   <h1>Past Classes</h2>
   <% @sessions.each do |session| %>
-    <% if session.date < Date.today %>
+    <% if (session.date < Date.today) && (session.student_sessions.count > 0) %>
       <h2><%= session.date.strftime("%m/%d/%Y") %></h2>
-      <% if session.student_sessions.count < 1 %>
-        <p class="text-info">No one is signed up yet!</p>
-      <% else %>
-        <% session.student_sessions.each do |ss| %>
-          <p><%= ss.student.name %></p>
-        <% end %>
+      <% session.student_sessions.each do |ss| %>
+        <p><%= ss.student.name %></p>
       <% end %>
     <% end %>
   <% end %>
