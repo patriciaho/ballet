@@ -19,7 +19,7 @@
       <% else %>
         <% session.student_sessions.each do |ss| %>
           <p>
-            <%= ss.student.name %>,
+            <%= ss.student.name if ss.student %>,
             <%= ss.certainty %>
             <%= link_to 'Edit', edit_student_session_path(ss) %>
             <%= link_to 'X', ss, method: :delete, data: { confirm: 'Are you sure you want to cancel?' } %>
