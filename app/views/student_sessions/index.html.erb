@@ -25,23 +25,25 @@
         <p class="text-info">No one is signed up yet!</p>
       <% else %>
         <h4>Estimated Cost: <%= session.price_range %></h4>
-        <h3>Definite</h3>
-        <% session.student_sessions.where(:certainty => "Definite").each do |ss| %>
-          <p>
-            <%= ss.student.name if ss.student %>,
-            <%= ss.certainty %>
-            <%= link_to 'Edit', edit_student_session_path(ss) %>
-            <%= link_to 'X', ss, method: :delete, data: { confirm: 'Are you sure you want to cancel?' } %>
-          </p>
+        <%if session.student_sessions.where(:certainty => "Definite").count > 0 %>
+          <h3>Definite</h3>
+          <% session.student_sessions.where(:certainty => "Definite").each do |ss| %>
+            <p>
+              <%= ss.student.name if ss.student %>
+              <%= link_to 'Edit', edit_student_session_path(ss) %>
+              <%= link_to 'X', ss, method: :delete, data: { confirm: 'Are you sure you want to cancel?' } %>
+            </p>
+          <% end %>
         <% end %>
-        <h3>Maybe</h3>
-        <% session.student_sessions.where(:certainty => "Maybe").each do |ss| %>
-          <p>
-            <%= ss.student.name if ss.student %>,
-            <%= ss.certainty %>
-            <%= link_to 'Edit', edit_student_session_path(ss) %>
-            <%= link_to 'X', ss, method: :delete, data: { confirm: 'Are you sure you want to cancel?' } %>
-          </p>
+        <%if session.student_sessions.where(:certainty => "Maybe").count > 0 %>
+          <h3>Maybe</h3>
+          <% session.student_sessions.where(:certainty => "Maybe").each do |ss| %>
+            <p>
+              <%= ss.student.name if ss.student %>
+              <%= link_to 'Edit', edit_student_session_path(ss) %>
+              <%= link_to 'X', ss, method: :delete, data: { confirm: 'Are you sure you want to cancel?' } %>
+            </p>
+          <% end %>
         <% end %>
       <% end %>
       <hr>
