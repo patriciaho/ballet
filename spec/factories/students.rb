@@ -1,6 +1,6 @@
 FactoryGirl.define do
   factory :student do
-    name "MyString"
+    sequence :name do |n| "Student #{n}" end
   end
 
 end

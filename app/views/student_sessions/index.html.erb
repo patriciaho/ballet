@@ -15,6 +15,8 @@
   <%= link_to 'Sign Up!', new_student_session_path, :class => "btn btn-primary btn-raised" %>
 
   <br>
+  <br>
+  <br>
 
   <% @sessions.each do |session| %>
     <% if session.date > Date.today %>
@@ -22,7 +24,18 @@
       <% if session.student_sessions.count < 1 %>
         <p class="text-info">No one is signed up yet!</p>
       <% else %>
-        <% session.student_sessions.each do |ss| %>
+        <h4>Estimated Cost: <%= session.price_range %></h4>
+        <h3>Definite</h3>
+        <% session.student_sessions.where(:certainty => "Definite").each do |ss| %>
+          <p>
+            <%= ss.student.name if ss.student %>,
+            <%= ss.certainty %>
+            <%= link_to 'Edit', edit_student_session_path(ss) %>
+            <%= link_to 'X', ss, method: :delete, data: { confirm: 'Are you sure you want to cancel?' } %>
+          </p>
+        <% end %>
+        <h3>Maybe</h3>
+        <% session.student_sessions.where(:certainty => "Maybe").each do |ss| %>
           <p>
             <%= ss.student.name if ss.student %>,
             <%= ss.certainty %>
@@ -31,6 +44,7 @@
           </p>
         <% end %>
       <% end %>
+      <hr>
     <% end %>
   <% end %>
 
