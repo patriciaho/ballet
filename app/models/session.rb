@@ -13,8 +13,8 @@ class Session < ActiveRecord::Base
       price = (115/maybe_sessions).ceil
       "$" + price.to_s
     else
-      low_range = (115/total_sessions).round
-      high_range = (115/definite_sessions).round
+      low_range = (115.0/total_sessions).round
+      high_range = (115.0/definite_sessions).round
 
       return "$" + low_range.to_s if low_range == high_range
 
