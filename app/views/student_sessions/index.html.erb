@@ -19,7 +19,7 @@
   <br>
 
   <% @sessions.each do |session| %>
-    <% if session.date > Date.today %>
+    <% if session.date >= Date.today %>
       <h2><%= session.date.strftime("%m/%d/%Y") %></h2>
       <% if session.student_sessions.count < 1 %>
         <p class="text-info">No one is signed up yet!</p>
