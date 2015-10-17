@@ -68,4 +68,4 @@
 <p><%= Date.today - 7.hours %></p>
 <p><%= Time.now - 7.hours %></p>
 <p><%= Session.all[1].date %></p>
-<p><%= Session.all[1].date >= (Time.now - 7.hours) %></p>
+<p><%= (Session.all[1].date + 20.hours) >= (Time.now - 7.hours) %></p>
