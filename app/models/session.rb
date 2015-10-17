@@ -3,7 +3,7 @@ class Session < ActiveRecord::Base
   has_many :students, :through => :student_sessions
 
   default_scope { order('date ASC') }
-  scope :upcoming, -> { where('date >= ?', Date.today + 7.hours) }
+  scope :upcoming, -> { where('date >= ?', Time.now + 28.hours) }
 
   def price_range
     total_sessions = self.student_sessions.count
