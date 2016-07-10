@@ -11,6 +11,8 @@
     </div>
   <% end %>
 
+  <p>If you are not on the list of students, contact Desiré to add you to the app.</p>
+
   <div class="field form-group">
     <%= f.label :student_id, :class => "col-lg-2 control-label"  %><br>
     <%= f.select :student_id, Student.all.collect {|s| [ s.name, s.id ] }, {}, { :class => "form-control" } %>

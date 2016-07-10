@@ -10,11 +10,11 @@ class Session < ActiveRecord::Base
     definite_sessions = self.student_sessions.where(:certainty => 'Definite').count
     maybe_sessions = self.student_sessions.where(:certainty => 'Maybe').count
     if definite_sessions == 0 && maybe_sessions != 0
-      price = (115/maybe_sessions).ceil
+      price = (135/maybe_sessions).ceil
       "$" + price.to_s
     else
-      low_range = (115.0/total_sessions).ceil
-      high_range = (115.0/definite_sessions).ceil
+      low_range = (135.0/total_sessions).ceil
+      high_range = (135.0/definite_sessions).ceil
 
       return "$" + low_range.to_s if low_range == high_range
 
