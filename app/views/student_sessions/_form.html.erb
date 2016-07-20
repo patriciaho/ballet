@@ -15,7 +15,7 @@
 
   <div class="field form-group">
     <%= f.label :student_id, :class => "col-lg-2 control-label"  %><br>
-    <%= f.select :student_id, Student.all.collect {|s| [ s.name, s.id ] }, {}, { :class => "form-control" } %>
+    <%= f.select :student_id, Student.all.collect {|s| [ s.name, s.id ] }, {:prompt => "Select Student"}, { :class => "form-control" } %>
   </div>
   <div class="field form-group">
     <%= f.label :certainty, :class => "col-lg-2 control-label"  %><br>
