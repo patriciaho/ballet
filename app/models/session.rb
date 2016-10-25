@@ -7,18 +7,19 @@ class Session < ActiveRecord::Base
 
   def price_range
     total_sessions = self.student_sessions.count
-    definite_sessions = self.student_sessions.where(:certainty => 'Definite').count
-    maybe_sessions = self.student_sessions.where(:certainty => 'Maybe').count
-    if definite_sessions == 0 && maybe_sessions != 0
-      price = (135/maybe_sessions).ceil
-      "$" + price.to_s
-    else
-      low_range = (135.0/total_sessions).ceil
-      high_range = (135.0/definite_sessions).ceil
+    # definite_sessions = self.student_sessions.where(:certainty => 'Definite').count
+    # maybe_sessions = self.student_sessions.where(:certainty => 'Maybe').count
+    # if definite_sessions == 0 && maybe_sessions != 0
+    #   price = (135/maybe_sessions).ceil
+    #   "$" + price.to_s
+    # else
+    #   low_range = (135.0/total_sessions).ceil
+    #   high_range = (135.0/definite_sessions).ceil
 
-      return "$" + low_range.to_s if low_range == high_range
+    #   return "$" + low_range.to_s if low_range == high_range
 
-      "$" + low_range.to_s + " - $" + high_range.to_s
-    end if total_sessions != 0
+    #   "$" + low_range.to_s + " - $" + high_range.to_s
+    # end if total_sessions != 0
+    return "$" + (135.0/total_sessions).ceil.to_s
   end
 end
